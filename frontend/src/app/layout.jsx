@@ -1,5 +1,6 @@
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/layout/Header";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -14,7 +15,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} antialiased`}>{children}</body>
+      <body className={`${roboto.className} antialiased`}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
