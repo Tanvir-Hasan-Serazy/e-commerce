@@ -27,10 +27,10 @@ const Header = () => {
       )}
 
       {/* Desktop Only */}
-      <div className="hidden lg:flex justify-between px-8 py-4 ">
+      <div className="hidden lg:flex justify-between px-4 py-4 max-w-7xl mx-auto">
         <div className=" flex items-center gap-10">
           <Link href={`/`} className="text-4xl text-orange-600 font-semibold">
-            Enterprice
+            H-Crop
           </Link>
 
           {/* Links */}
