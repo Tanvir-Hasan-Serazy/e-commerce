@@ -63,10 +63,9 @@ export const HomeBestDeals = () => {
       <h3 className="text-lg lg:text-4xl font-bold text-orange-600 py-4 lg:py-6">
         Today's Best Deals
       </h3>
-      <div className="flex gap-4 justify-between w-full">
-        {bestDeals?.map((deal) => (
-          <HomeCard data={deal} key={deal?.id} />
-        ))}
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-4 w-full">
+        {bestDeals &&
+          bestDeals?.map((deal) => <HomeCard data={deal} key={deal?.id} />)}
       </div>
     </div>
   );

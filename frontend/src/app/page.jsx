@@ -3,6 +3,8 @@ import { HomeBestDeals } from "@/components/home/HomeBestDeals";
 import { HomeBannerCard } from "@/components/home/HomeBannerCard";
 import { HomeCategory } from "@/components/home/HomeCategory";
 import { HomeNewArrivals } from "@/components/home/HomeNewArrivals";
+import { HomeRecomenations } from "@/components/home/HomeRecomenations";
+import { HomeFaq } from "@/components/home/HomeFaq";
 
 export default function Home() {
   return (
@@ -19,8 +21,14 @@ export default function Home() {
       {/* Best Deals */}
       <HomeBestDeals />
 
+      {/* Recommended */}
+      <HomeRecomenations />
+
       {/* New Arriavl */}
-      <HomeNewArrivals/>
+      <HomeNewArrivals />
+
+      {/* Home - FAQ */}
+      <HomeFaq />
     </>
   );
 }

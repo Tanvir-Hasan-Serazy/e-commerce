@@ -59,14 +59,13 @@ const newArrivals = [
 
 export const HomeNewArrivals = () => {
   return (
-    <div className="max-w-7xl px-4 mx-auto py-4 lg:py-6 mb-6 bg-orange-500/40 rounded-md">
+    <div className="max-w-[1248] px-4 mx-auto py-4 lg:py-6 mb-6 bg-orange-500/40 rounded-md">
       <h3 className="text-lg lg:text-4xl font-bold text-orange-600 py-4 lg:py-6">
         New Arrival
       </h3>
-      <div className="flex gap-4 justify-between w-full">
-        {newArrivals?.map((deal) => (
-          <HomeCard data={deal} key={deal?.id} />
-        ))}
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-4 w-full">
+        {newArrivals &&
+          newArrivals?.map((deal) => <HomeCard data={deal} key={deal?.id} />)}
       </div>
     </div>
   );
