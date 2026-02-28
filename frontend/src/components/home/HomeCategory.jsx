@@ -17,11 +17,11 @@ const categories = [
 
 export const HomeCategory = () => {
   return (
-    <div className="max-w-7xl px-4 mx-auto py-4 lg:py-6">
+    <div className="max-w-7xl px-4 mx-auto py-4 lg:py-6 lg:mt-6">
       <h3 className="text-lg lg:text-4xl font-bold text-orange-600">
         Most Popular Categories
       </h3>
-      <div className="flex gap-4 justify-between">
+      <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-8   items-center sm:grid-cols-3 gap-4">
         {categories?.map((category) => (
           <div className="max-w-30 w-full lg:max-w-40" key={category?.name}>
             <div className="w-30 h-30 lg:w-35 lg:h-35 p-8 lg:p-8 bg-gray-100 rounded-full mt-4 lg:mt-10">

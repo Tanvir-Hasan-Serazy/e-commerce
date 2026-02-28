@@ -50,8 +50,8 @@ const banners = [
 
 export const HomeBanner = () => {
   return (
-    <div className="relative lg:max-w-3xl w-full ">
-      <Slider {...settings}>
+    <div className="relative lg:max-w-3xl w-full">
+      <Slider {...settings} className="overflow-clip">
         {banners?.map((banner) => (
           <div className="h-60 lg:h-120 rounded-md">
             <div

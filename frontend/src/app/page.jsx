@@ -1,7 +1,8 @@
 import { HomeBanner } from "@/components/home/HomeBanner";
 import { HomeBestDeals } from "@/components/home/HomeBestDeals";
-import { HomeCard } from "@/components/home/HomeCard";
+import { HomeBannerCard } from "@/components/home/HomeBannerCard";
 import { HomeCategory } from "@/components/home/HomeCategory";
+import { HomeNewArrivals } from "@/components/home/HomeNewArrivals";
 
 export default function Home() {
   return (
@@ -9,7 +10,7 @@ export default function Home() {
       {/* Banner */}
       <div className="flex flex-col lg:flex-row gap-4 max-w-7xl mx-auto px-4">
         <HomeBanner />
-        <HomeCard />
+        <HomeBannerCard />
       </div>
 
       {/* Popular category */}
@@ -17,6 +18,9 @@ export default function Home() {
 
       {/* Best Deals */}
       <HomeBestDeals />
+
+      {/* New Arriavl */}
+      <HomeNewArrivals/>
     </>
   );
 }

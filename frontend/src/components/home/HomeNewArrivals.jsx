@@ -1,6 +1,6 @@
+import React from "react";
 import { HomeCard } from "./HomeCard";
-
-const bestDeals = [
+const newArrivals = [
   {
     id: 1,
     image: "/temp/placeholder.png",
@@ -57,14 +57,14 @@ const bestDeals = [
   },
 ];
 
-export const HomeBestDeals = () => {
+export const HomeNewArrivals = () => {
   return (
-    <div className="max-w-7xl px-4 mx-auto py-4 lg:py-6 mb-6">
+    <div className="max-w-7xl px-4 mx-auto py-4 lg:py-6 mb-6 bg-orange-500/40 rounded-md">
       <h3 className="text-lg lg:text-4xl font-bold text-orange-600 py-4 lg:py-6">
-        Today's Best Deals
+        New Arrival
       </h3>
       <div className="flex gap-4 justify-between w-full">
-        {bestDeals?.map((deal) => (
+        {newArrivals?.map((deal) => (
           <HomeCard data={deal} key={deal?.id} />
         ))}
       </div>
