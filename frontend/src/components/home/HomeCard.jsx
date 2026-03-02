@@ -10,7 +10,7 @@ import Link from "next/link";
 export const HomeCard = ({ data }) => {
   return (
     <Link href={`#`} key={data?.id}>
-      <div className="lg:max-w-48 w-full shadow rounded-md bg-white">
+      <div className="w-full shadow rounded-md bg-white">
         <div className="relative h-45  rounded-t-md overflow-hidden ">
           <ImageWithFallback
             className="aspect-video w-full h-full object-cover rounded-t-md transition-transform duration-300 hover:scale-125"
