@@ -58,14 +58,14 @@ export const HomeBanner = () => {
               className="h-full bg-cover bg-center bg-no-repeat rounded-md"
               style={{ backgroundImage: 'url("/temp/banner.jpg")' }}
             >
-              <div className="px-4">
+              <div className="px-4 relative">
                 <h2 className="text-white text-lg lg:text-5xl font-semibold pt-6 lg:pt-30 lg:max-w-90 leading-15">
                   {banner?.title}
                 </h2>
                 <p className="text-white text-xs lg:text-xl pt-0 lg:pt-20 lg:max-w-140 ">
                   {banner?.subtitle}
                 </p>
-                <div className="mt-2 lg:mt-15">
+                <div className="mt-6 lg:mt-10 ">
                   <Link
                     className="p-1 text-xs lg:text-base cursor-pointer bg-white rounded-full lg:p-3"
                     href="#"

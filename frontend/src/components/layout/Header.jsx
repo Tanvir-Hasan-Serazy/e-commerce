@@ -6,7 +6,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 
-const Header = () => {
+export const Header = () => {
   const [offer, setOffer] = useState(false);
   const [open, setOpen] = useState(false);
   return (
@@ -53,9 +53,9 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="p-2 bg-gray-200 rounded-full">
+          <Link href="#" className="p-2 bg-gray-200 rounded-full">
             <Handbag className="text-orange-600 cursor-pointer" />
-          </div>
+          </Link>
           <div className="p-2 bg-gray-200 rounded-full">
             <User className="text-orange-600 cursor-pointer" />
           </div>
@@ -134,5 +134,3 @@ const Header = () => {
     </>
   );
 };
-
-export default Header;
