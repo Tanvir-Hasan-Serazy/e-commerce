@@ -127,13 +127,15 @@ export const Footer = () => {
               </h3>
             </div>
 
-            <div className="relative w-full max-w-44 h-full">
+            <div className="relative w-auto max-w-44 h-10">
               <Image
                 src="/temp/payment__logos.webp"
                 alt="Payment Logos"
+                priority
                 width={176}
-                height={176}
-                className="rounded-2xl object-cover w-full h-full"
+                height={40}
+                sizes="100%"
+                className="rounded-2xl object-cover w-auto h-full"
               />
             </div>
 
