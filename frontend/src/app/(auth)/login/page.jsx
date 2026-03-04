@@ -1,23 +1,16 @@
 "use client";
-import React from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, Controller } from "react-hook-form";
-import * as z from "zod";
+import { Button } from "@/components/ui/button";
 import {
   Field,
-  FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroupTextarea,
-} from "@/components/ui/input-group";
-import { Button } from "@/components/ui/button";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
+import { Controller, useForm } from "react-hook-form";
+import * as z from "zod";
 
 const formSchema = z.object({
   username: z
@@ -93,6 +86,9 @@ const page = () => {
                 </Field>
               )}
             />
+            <Link href="#" className="underline">
+              Forgot Password?
+            </Link>
             <Button type="submit">Submit</Button>
           </FieldGroup>
         </form>
