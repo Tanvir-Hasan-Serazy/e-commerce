@@ -64,6 +64,7 @@ const page = () => {
                 </Field>
               )}
             />
+
             {/* Password */}
             <Controller
               name="password"

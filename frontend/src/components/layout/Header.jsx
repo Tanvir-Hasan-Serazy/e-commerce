@@ -27,37 +27,42 @@ export const Header = () => {
       )}
 
       {/* Desktop Only */}
-      <div className="hidden lg:flex justify-between px-4 py-4 max-w-7xl mx-auto">
-        <div className=" flex items-center gap-10">
-          <Link href={`/`} className="text-4xl text-orange-600 font-semibold">
-            H-Crop
-          </Link>
+      <div className="bg-gray-100 border-b">
+        <div className="hidden lg:flex justify-between px-4 py-4 max-w-7xl mx-auto">
+          <div className=" flex items-center gap-10">
+            <Link href={`/`} className="text-4xl text-orange-600 font-semibold">
+              H-Crop
+            </Link>
 
-          {/* Links */}
-          <nav className="flex gap-6 font-medium text-lg">
-            <Link href="#">Products</Link>
-            <Link href="#">Shop</Link>
-            <Link href="#">Custom Orders</Link>
-            <Link href="#">Deal</Link>
-            <Link href="#">About</Link>
-            <Link href="#">Contact</Link>
-          </nav>
-        </div>
-
-        {/* Right Side */}
-        <div className="flex justify-between items-center gap-4">
-          <div className="flex relative items-center min-w-70 w-full">
-            <Input className="rounded-full" placeholder="Search any product" />
-            <div className="p-1.5 bg-orange-600 absloute -ml-8 rounded-full">
-              <Search className=" text-white size-5 cursor-pointer" />
-            </div>
+            {/* Links */}
+            <nav className="flex gap-6 font-medium text-lg">
+              <Link href="#">Products</Link>
+              <Link href="#">Shop</Link>
+              <Link href="#">Custom Orders</Link>
+              <Link href="#">Deal</Link>
+              <Link href="#">About</Link>
+              <Link href="#">Contact</Link>
+            </nav>
           </div>
 
-          <Link href="#" className="p-2 bg-gray-200 rounded-full">
-            <Handbag className="text-orange-600 cursor-pointer" />
-          </Link>
-          <div className="p-2 bg-gray-200 rounded-full">
-            <User className="text-orange-600 cursor-pointer" />
+          {/* Right Side */}
+          <div className="flex justify-between items-center gap-4">
+            <div className="flex relative items-center min-w-70 w-full">
+              <Input
+                className="rounded-full"
+                placeholder="Search any product"
+              />
+              <div className="p-1.5 bg-orange-600 absloute -ml-8 rounded-full">
+                <Search className=" text-white size-5 cursor-pointer" />
+              </div>
+            </div>
+
+            <Link href="#" className="p-2 bg-gray-200 rounded-full">
+              <Handbag className="text-orange-600 cursor-pointer" />
+            </Link>
+            <div className="p-2 bg-gray-200 rounded-full">
+              <User className="text-orange-600 cursor-pointer" />
+            </div>
           </div>
         </div>
       </div>
