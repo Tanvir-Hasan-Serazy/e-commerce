@@ -1,3 +1,5 @@
+import { ZodError } from "zod";
+
 export const validate = (schema, source = "body") => {
   return async (req, res, next) => {
     try {
@@ -8,36 +10,32 @@ export const validate = (schema, source = "body") => {
             ? req.params
             : req.body;
 
-      console.log("Raw data before validation:", data);
-
       const validated = await schema.parseAsync(data);
-
-      console.log("Validated data:", validated);
 
       if (source === "query") {
         req.validatedQuery = validated;
       } else if (source === "params") {
         req.validatedParams = validated;
       } else {
-        req.body = validated; // body CAN be reassigned
+        req.body = validated;
       }
 
       next();
     } catch (error) {
-      if (error.name === "ZodError" || error.errors) {
-        console.error("Validation error details:", error.errors);
+      if (error instanceof ZodError) {
         return res.status(400).json({
           success: false,
-          error: "Validation failed",
-          details: error.errors,
+          message: "Validation failed",
+          errors: error.issues.map((issue) => ({
+            path: issue.path.join("."),
+            message: issue.message,
+          })),
         });
       }
 
-      console.error("Non-Zod error in validation:", error);
       return res.status(500).json({
         success: false,
-        error: "Server error during validation",
-        message: error.message,
+        message: "Server error during validation",
       });
     }
   };

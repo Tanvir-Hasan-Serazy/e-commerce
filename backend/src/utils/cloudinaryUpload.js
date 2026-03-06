@@ -1,20 +1,22 @@
 import { Readable } from "stream";
 import cloudinary from "../config/cloudinary.js";
 
-export const uploadToCloudinary = (buffer) => {
+export const uploadToCloudinary = (buffer, options = {}) => {
+  const { folder = "main", publicId } = options;
+
   return new Promise((resolve, reject) => {
     const uploadStream = cloudinary.uploader.upload_stream(
       {
-        folder: "main",
+        folder,
+        public_id: publicId,
         resource_type: "auto",
       },
       (error, result) => {
-        if (error) {
-          return reject(error);
-        }
+        if (error) return reject(error);
         resolve(result);
       },
     );
+
     Readable.from(buffer).pipe(uploadStream);
   });
 };

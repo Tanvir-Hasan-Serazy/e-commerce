@@ -7,7 +7,10 @@ export const getBanner = async (req, res) => {
       orderBy: { createdAt: "desc" },
     });
     res.status(200).json({ success: true, data });
-  } catch (error) {}
+  } catch (error) {
+    console.error("Error fetching banners", error);
+    res.status(500).json({ success: false, message: "Error fetching banners" });
+  }
 };
 
 export const postBanner = async (req, res) => {
@@ -15,10 +18,12 @@ export const postBanner = async (req, res) => {
     const { title, subtitle } = req.body;
 
     // Image Uploding to Cloudinary
-    const uploadResult = await uploadToCloudinary(req.file.buffer);
+    const uploadResult = await uploadToCloudinary(req.file.buffer, {
+      folder: "home/banners",
+    });
 
     // Saving to DB
-    const banners = await prisma.homeBanner.create({
+    const banner = await prisma.homeBanner.create({
       data: {
         title: title,
         subtitle: subtitle,
