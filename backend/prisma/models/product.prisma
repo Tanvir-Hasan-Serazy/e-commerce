@@ -14,7 +14,7 @@ model Product {
     id                 Int      @id @default(autoincrement())
     name               String
     imageURL           String[]
-    cloudinaryPublicID String
+    cloudinaryPublicID String[]
     description        String
     stock              Int
     originalPrice      Float
