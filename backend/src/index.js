@@ -1,7 +1,7 @@
 import express from "express";
 import { PORT } from "./secrets.js";
 import cors from "cors";
-import rootRouter from "./routes/index.js";
+import rootRouter from "./routes/index.route.js";
 const app = express();
 
 app.get("/api", (req, res) => {

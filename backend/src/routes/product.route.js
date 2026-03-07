@@ -5,13 +5,12 @@ import { validate } from "../middleware/validateMiddleware.js";
 import { upload } from "../middleware/upload.js";
 import { requireFile } from "../middleware/requireFile.js";
 
-const product = Express.Router();
-const products = Express.Router();
+const productRouter = Express.Router();
 
-products.get("/", productController.getProducts);
-product.get("/:id", productController.getProduct);
+productRouter.get("/", productController.getProducts);
+productRouter.get("/:id", productController.getProduct);
 
-product.post(
+productRouter.post(
   "/",
   upload.array("images", 5),
   requireFile("images"),
@@ -19,13 +18,13 @@ product.post(
   productController.postProduct,
 );
 
-product.put(
+productRouter.put(
   "/:id",
   upload.array("images", 5),
   validate(createProductSchema),
   productController.upldateProduct,
 );
 
-product.delete("/:id", productController.deleteProduct);
+productRouter.delete("/:id", productController.deleteProduct);
 
-export { product, products };
+export default productRouter;

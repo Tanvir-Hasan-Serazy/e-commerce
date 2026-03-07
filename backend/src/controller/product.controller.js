@@ -187,7 +187,6 @@ export const upldateProduct = async (req, res) => {
     } = req.body;
 
     // Check if exist
-
     const product = await prisma.product.findUnique({
       where: { id: Number(id) },
     });

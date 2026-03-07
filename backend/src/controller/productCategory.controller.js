@@ -1,7 +1,10 @@
-import { uploadToCloudinary } from "../utils/cloudinaryUpload.js";
+import {
+  deleteFromCloudinary,
+  uploadToCloudinary,
+} from "../utils/cloudinaryUpload.js";
 import { prisma } from "../prisma/client.js";
 
-export const getCategory = async (req, res) => {
+export const getCategories = async (req, res) => {
   try {
     const data = await prisma.category.findMany({
       orderBy: { createdAt: "desc" },
@@ -12,6 +15,29 @@ export const getCategory = async (req, res) => {
     res
       .status(500)
       .json({ success: false, message: "Error fetching categories" });
+  }
+};
+
+export const getCategory = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const category = await prisma.category.findUnique({
+      where: { id: Number(id) },
+    });
+
+    if (!category) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Category is not found" });
+    }
+
+    res.status(200).json({ success: true, data: category });
+  } catch (error) {
+    console.error("Error fetching category");
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to fetch category" });
   }
 };
 
@@ -39,5 +65,90 @@ export const postCategory = async (req, res) => {
     res
       .status(500)
       .json({ success: false, message: "Error creating category" });
+  }
+};
+
+export const updateCategory = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const { name } = req.body;
+
+    const category = await prisma.category.findUnique({
+      where: { id: Number(id) },
+    });
+
+    if (!category) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Category not found" });
+    }
+    let imageURL = category.imageURL;
+    let publicId = category.cloudinaryPublicID;
+
+    // Delete previous image
+    if (req?.file) {
+      if (category.cloudinaryPublicID) {
+        await deleteFromCloudinary(category.cloudinaryPublicID);
+      }
+      const uploadResult = await uploadToCloudinary(req.file.buffer, {
+        folder: "category",
+      });
+
+      imageURL = uploadResult.secure_url;
+      publicId = uploadResult.public_id;
+    }
+
+    const updateProductCategory = await prisma.category.update({
+      where: { id: Number(id) },
+      data: {
+        name: name,
+        imageURL: imageURL,
+        cloudinaryPublicID: publicId,
+      },
+    });
+
+    res
+      .status(201)
+      .json({ success: true, message: "Category successfully updated" });
+  } catch (error) {
+    console.error("Error updating category", error);
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to update category" });
+  }
+};
+
+export const deleteCategory = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const category = await prisma.category.findUnique({
+      where: { id: Number(id) },
+    });
+
+    if (!category) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Category not found" });
+    }
+
+    // Deleting Image
+    if (category.cloudinaryPublicID) {
+      deleteFromCloudinary(category.cloudinaryPublicID);
+    }
+
+    await prisma.category.delete({
+      where: { id: Number(id) },
+    });
+
+    res
+      .status(200)
+      .json({ success: true, message: "Category deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting categories");
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to delete category" });
   }
 };
