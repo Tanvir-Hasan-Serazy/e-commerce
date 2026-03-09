@@ -55,7 +55,7 @@ export const postCategory = async (req, res) => {
       data: {
         name: name,
         imageURL: uploadResult.secure_url,
-        cloudinaryPublicID: uploadResult.public_id,
+        cloudinaryPublicId: uploadResult.public_id,
       },
     });
 
@@ -84,12 +84,12 @@ export const updateCategory = async (req, res) => {
         .json({ success: false, message: "Category not found" });
     }
     let imageURL = category.imageURL;
-    let publicId = category.cloudinaryPublicID;
+    let publicId = category.cloudinaryPublicId;
 
     // Delete previous image
     if (req?.file) {
-      if (category.cloudinaryPublicID) {
-        await deleteFromCloudinary(category.cloudinaryPublicID);
+      if (category.cloudinaryPublicId) {
+        await deleteFromCloudinary(category.cloudinaryPublicId);
       }
       const uploadResult = await uploadToCloudinary(req.file.buffer, {
         folder: "category",
@@ -104,7 +104,7 @@ export const updateCategory = async (req, res) => {
       data: {
         name: name,
         imageURL: imageURL,
-        cloudinaryPublicID: publicId,
+        cloudinaryPublicId: publicId,
       },
     });
 
@@ -134,8 +134,8 @@ export const deleteCategory = async (req, res) => {
     }
 
     // Deleting Image
-    if (category.cloudinaryPublicID) {
-      deleteFromCloudinary(category.cloudinaryPublicID);
+    if (category.cloudinaryPublicId) {
+      deleteFromCloudinary(category.cloudinaryPublicId);
     }
 
     await prisma.category.delete({

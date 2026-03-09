@@ -2,7 +2,7 @@ model Category {
     id                 Int       @id @default(autoincrement())
     name               String    @unique
     imageURL           String?
-    cloudinaryPublicID String?
+    cloudinaryPublicId String?
     products           Product[]
     createdAt          DateTime  @default(now())
     updatedAt          DateTime  @updatedAt
@@ -14,7 +14,7 @@ model Product {
     id                 Int      @id @default(autoincrement())
     name               String
     imageURL           String[]
-    cloudinaryPublicID String[]
+    cloudinaryPublicId String[]
     description        String
     stock              Int
     originalPrice      Float

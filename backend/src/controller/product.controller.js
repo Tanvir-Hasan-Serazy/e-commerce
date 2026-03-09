@@ -123,7 +123,7 @@ export const postProduct = async (req, res) => {
         brand: brand,
         warranty: warranty,
         imageURL: imageURLs,
-        cloudinaryPublicID: publicIds,
+        cloudinaryPublicId: publicIds,
       },
     });
 
@@ -152,8 +152,8 @@ export const deleteProduct = async (req, res) => {
     }
 
     // Deleting image from cloudinary
-    if (product.cloudinaryPublicID) {
-      await deleteFromCloudinary(product.cloudinaryPublicID);
+    if (product.cloudinaryPublicId) {
+      await deleteFromCloudinary(product.cloudinaryPublicId);
     }
 
     await prisma.product.delete({
@@ -200,11 +200,11 @@ export const upldateProduct = async (req, res) => {
     // If new image is uploaded
 
     let imageURLs = product.imageURL;
-    let publicIds = product.cloudinaryPublicID;
+    let publicIds = product.cloudinaryPublicId;
 
     if (req.files?.length) {
-      if (product.cloudinaryPublicID) {
-        await deleteFromCloudinary(product.cloudinaryPublicID);
+      if (product.cloudinaryPublicId) {
+        await deleteFromCloudinary(product.cloudinaryPublicId);
       }
       // Upload new image
       const uploadResults = await Promise.all(
@@ -229,7 +229,7 @@ export const upldateProduct = async (req, res) => {
         brand: brand,
         warranty: warranty,
         imageURL: imageURLs,
-        cloudinaryPublicID: publicIds,
+        cloudinaryPublicId: publicIds,
       },
     });
 

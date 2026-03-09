@@ -1,0 +1,15 @@
+// model Cart {
+//     id        String     @id @default(uuid())
+//     userId    String
+//     user  user @relation(fields: [userId], references: [id])
+//     // items CartItem[]
+//     // cartItems CartItem[]
+// }
+
+// model CartItem {
+//     id        String @id @default(uuid())
+//     cartId    String
+//     productID Int
+//     quantity  Int
+//     // cart      Cart   @relation(fields: [productID], references: [id])
+// }
