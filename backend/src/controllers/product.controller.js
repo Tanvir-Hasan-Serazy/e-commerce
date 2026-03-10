@@ -85,7 +85,7 @@ export const getProduct = async (req, res) => {
   }
 };
 
-export const postProduct = async (req, res) => {
+export const createProduct = async (req, res) => {
   try {
     const {
       name,

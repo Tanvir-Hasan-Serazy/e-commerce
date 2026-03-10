@@ -1,3 +1,9 @@
+enum Role {
+    ADMIN
+    STAFF
+    USER
+}
+
 model User {
     id          String   @id @default(cuid())
     firstName   String
@@ -6,6 +12,7 @@ model User {
     userName    String   @unique
     dateOfBirth DateTime
     password    String
+    role        Role     @default(USER)
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
 

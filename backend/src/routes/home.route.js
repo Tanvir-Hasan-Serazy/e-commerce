@@ -1,11 +1,15 @@
 import express from "express";
-import * as homeBannerController from "../controller/homeBanner.controller.js";
-import { upload } from "../middleware/upload.js";
+import * as homeBannerController from "../controllers/homeBanner.controller.js";
+import { upload } from "../middlewares/upload.js";
 
-const banner = express.Router();
+const bannerRouter = express.Router();
 
 // banner.post("/");
-banner.get("/", homeBannerController.getBanner);
-banner.post("/", upload.single("image"), homeBannerController.postBanner);
+bannerRouter.get("/", homeBannerController.getBanner);
+bannerRouter.post(
+  "/",
+  upload.single("image"),
+  homeBannerController.createBanner,
+);
 
-export default banner;
+export default bannerRouter;

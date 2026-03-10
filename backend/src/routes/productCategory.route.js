@@ -1,9 +1,9 @@
 import express from "express";
-import { upload } from "../middleware/upload.js";
-import * as productCategoryController from "../controller/productCategory.controller.js";
+import { upload } from "../middlewares/upload.js";
+import * as productCategoryController from "../controllers/productCategory.controller.js";
 import { createCategorySchema } from "../schemas/productCategory.schema.js";
-import { requireFile } from "../middleware/requireFile.js";
-import { validate } from "../middleware/validateMiddleware.js";
+import { requireFile } from "../middlewares/requireFile.js";
+import { validate } from "../middlewares/validateMiddleware.js";
 
 const categoryRouter = express.Router();
 
@@ -14,7 +14,7 @@ categoryRouter.post(
   upload.single("image"),
   requireFile("image"),
   validate(createCategorySchema),
-  productCategoryController.postCategory,
+  productCategoryController.createCategory,
 );
 categoryRouter.put(
   "/:id",

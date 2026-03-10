@@ -13,7 +13,7 @@ export const getBanner = async (req, res) => {
   }
 };
 
-export const postBanner = async (req, res) => {
+export const createBanner = async (req, res) => {
   try {
     const { title, subtitle } = req.body;
 

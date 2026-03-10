@@ -41,7 +41,7 @@ export const getCategory = async (req, res) => {
   }
 };
 
-export const postCategory = async (req, res) => {
+export const createCategory = async (req, res) => {
   try {
     const { name } = req.body;
 
