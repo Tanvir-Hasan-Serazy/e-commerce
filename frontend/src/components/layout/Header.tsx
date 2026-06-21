@@ -14,7 +14,7 @@ export const Header = () => {
 
   const isActive = (href: string) => pathname === href;
   return (
-    <header className=" sticky top-0 z-50 w-full bg-black ">
+    <header className=" sticky top-0 z-50 w-full bg-primary">
       <nav className="max-w-7xl mx-auto px-4 py-4 w-full flex items-center justify-between ">
         {/* Desktop Navigation */}
         <div className="flex gap-2 items-center">
@@ -30,7 +30,7 @@ export const Header = () => {
             placeholder="Search products..."
             className="bg-white/20 border-none h-10 focus:ring-0 text-sm text-white placeholder:text-white/70"
           />
-          <Search className="text-white -mx-10" />
+          <Search className="text-white -mx-10 cursor-pointer" />
         </div>
 
         <div className="hidden xl:flex gap-6 items-center">

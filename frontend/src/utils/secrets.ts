@@ -1,1 +1,1 @@
-export const fallbackImage = "/images/fallback.png";
+export const fallbackImage = "/images/fallback-image.png";
