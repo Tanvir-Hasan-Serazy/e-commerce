@@ -1,0 +1,17 @@
+model Order {
+    id     String       @id @unique @default(cuid())
+    userId String
+    total  Float
+    status String
+    items  OrderItems[]
+}
+
+model OrderItems {
+    id        String @id @unique @default(cuid())
+    orderId   String
+    productId Int
+    quantity  Int
+    price     Float
+
+    order Order @relation(fields: [orderId], references: [id])
+}
