@@ -87,9 +87,7 @@ export const HomeCategories = () => {
     <section className="bg-amber-50 pb-16">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between mb-6 pb-2">
-          <h2 className="text-xl sm:text-2xl font-semibold ">
-            Shop by Category
-          </h2>
+          <h2 className="text-xl sm:text-2xl font-bold ">Shop by Category</h2>
           {categories.length > 5 && (
             <div className="flex gap-2 ">
               <button

@@ -41,7 +41,7 @@ export const Header = () => {
               className={`text-white py-2 mx-2 font-medium transition-all duration-300 cursor-pointer border-b-2 ${
                 isActive(link.href)
                   ? "border-b-primary"
-                  : "hover:text-primary border-b-transparent hover:border-b-primary duration-700"
+                  : "border-b-transparent hover:border-b-white duration-700"
               }`}
             >
               {link.label}
@@ -63,7 +63,7 @@ export const Header = () => {
             className="bg-white/80 border-l border-white/20 p-4"
           >
             <div className="flex flex-col gap-6 mt-8 ">
-              {navigationLinks.map((link) => (
+              {navigationLinks?.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
